@@ -1,0 +1,32 @@
+name: day3-workflow
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  GLOBAL_VAR: "hello from the top"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: show global env
+        run: | 
+            echo "Global var is: $GLOBAL_VAR"
+
+      - name: step with its own env
+        env:
+          LOCAL_VAR: "scoped value"
+        run: |
+          echo "Local var is: $LOCAL_VAR"
+          echo "Global still works: $GLOBAL_VAR"
+
+      - name: multi-line script
+        run: |
+          echo "Now running multiple lines..."
+          node --version
+          echo "Done."
