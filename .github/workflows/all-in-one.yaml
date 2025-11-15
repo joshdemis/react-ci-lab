@@ -25,6 +25,10 @@ jobs:
           echo "Local var is: $LOCAL_VAR"
           echo "Global still works: $GLOBAL_VAR"
 
+      - name: run ps1
+        shell: pwsh
+        run: ./scripts/sample.ps1
+
       - name: multi-line script
         run: |
           echo "Now running multiple lines..."
