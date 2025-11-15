@@ -1,0 +1,11 @@
+scripts:
+  build: |
+    echo "Starting build process..."
+    npm install
+    npm run build
+
+  deploy: |
+    echo "Deploying application..."
+    scp -r ./build user@server:/var/www/html/
+    echo "Deployment complete,
+    visit http://yourserver.com to see your application."
