@@ -1,0 +1,19 @@
+name: pr-checks
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: check node version
+        run: node --version
+
+      - name: simple script
+        run: |
+          echo "Pull Request detected."
+          echo "Running lightweight checks..."
