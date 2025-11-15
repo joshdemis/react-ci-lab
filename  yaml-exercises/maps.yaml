@@ -1,0 +1,9 @@
+app:
+  name: sample-react-site 
+  version: 1.0.0
+  metadata:
+    owner:josh
+    environment: dev
+    tages:
+      purpose: yaml-exercise
+      tier: frontend
