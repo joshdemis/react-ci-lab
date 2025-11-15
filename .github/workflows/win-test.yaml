@@ -1,0 +1,11 @@
+name: windows-test
+
+on: push
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Running on Windows"
+      - run: node --version
