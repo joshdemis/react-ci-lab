@@ -41,14 +41,14 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            {/* Theme toggle */}
+            {/* Theme toggle
             <button
               onClick={toggleDark}
               aria-label="Toggle Theme"
               className="h-9 w-9 grid place-items-center rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
             >
               {dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
+            </button> */}
 
             <a href="#contact">
               <button className="px-4 py-2 rounded-2xl bg-brand-500 text-white hover:bg-brand-600 transition">
