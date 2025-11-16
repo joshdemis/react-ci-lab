@@ -1,0 +1,33 @@
+name: day5-matrix-build
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-matrix:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18, 20]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: show version
+        run: node --version
+
+      - name: multi-line script
+        run: |
+          echo "Matrix job running for Node ${{ matrix.node-version }}"
+          echo "Installing deps..."
+          npm install
+          echo "Running build..."
+          npm run build || echo "Build didn't exist, continuing..."
