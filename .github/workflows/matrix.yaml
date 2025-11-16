@@ -1,8 +1,7 @@
 name: day5-matrix-build
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   test-matrix:

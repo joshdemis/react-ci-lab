@@ -1,8 +1,7 @@
 name: day7-cache
 
 on:
-  push:
-    branches: [ main ]
+   workflow_dispatch:
 
 jobs:
   build:
