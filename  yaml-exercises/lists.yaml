@@ -1,8 +1,0 @@
-supported_versions:
-  - "18"
-  - "20"
-  - "22"
-regions:
-  - "us-east-1"
-  - "us-west-2"
-  - "eu-west-1"
