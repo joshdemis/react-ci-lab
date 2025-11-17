@@ -1,4 +1,4 @@
-name: day8-react-deploy
+name: react-build-deploy
 
 on:
   push:
