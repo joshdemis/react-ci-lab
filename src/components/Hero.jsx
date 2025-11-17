@@ -44,7 +44,7 @@ export default function Hero() {
             <h1
               className="
                 mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold
-                tracking-tight text-neutral-900 leading-tight
+                tracking-tight text-blue-900 leading-tight
               "
             >
               Your engineering partner for supply, installation, and support.

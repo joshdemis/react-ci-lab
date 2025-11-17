@@ -19,7 +19,7 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left Column */}
           <div>
-            <h3 className="text-3xl font-bold tracking-tight">Get in touch</h3>
+            <h3 className="text-3xl font-bold tracking-tight  text-blue-900">Get in touch</h3>
             <p className="mt-2 text-neutral-700">Request quotations, site surveys, or technical support.</p>
 
             <div className="mt-6 space-y-3 text-sm">

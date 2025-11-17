@@ -34,7 +34,7 @@ export default function Products() {
     <section id="products" className="py-16 bg-neutral-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div {...fadeUp} className="max-w-2xl">
-          <h2 className="text-3xl font-bold tracking-tight">Product Lines</h2>
+          <h2 className="text-3xl font-bold tracking-tight  text-blue-900">Product Lines</h2>
           <p className="mt-2 text-neutral-700">
             Import and distribution of certified electrical materials with full documentation and warranty support.
           </p>

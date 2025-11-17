@@ -29,7 +29,7 @@ export default function Services() {
     <section id="services" className="py-16 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div {...fadeUp} className="max-w-2xl">
-          <h2 className="text-3xl font-bold tracking-tight">Services</h2>
+          <h2 className="text-3xl font-bold tracking-tight  text-blue-900">Services</h2>
           <p className="mt-2 text-neutral-700">
             Design, installation, commissioning, maintenance, after-sales service guarantee, and training.
           </p>
