@@ -3,11 +3,7 @@ name: multi-environment-deploy
 on:
   push:
     branches: [ main ]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+  pull_request:
 
 jobs:
   build:
@@ -20,38 +16,67 @@ jobs:
         with:
           node-version: 20
 
-      - name: install deps
+      - name: Install deps
         run: npm ci
 
-      - name: build react
+      - name: Build React/Vite app
         run: npm run build
 
-      - name: upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
         with:
-          path: ./dist  # you fixed this
+          name: build-folder
+          path: dist
 
   deploy_staging:
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: staging
-      url: ${{ steps.deploy.outputs.page_url }}
+    if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: deploy to staging
-        id: deploy
-        uses: actions/deploy-pages@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: build-folder
+          path: dist
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Deploy to STAGING
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
+        run: |
+          netlify deploy \
+            --site=$SITE_ID \
+            --auth=$NETLIFY_AUTH_TOKEN \
+            --dir=dist \
+            --message="Staging deploy"
 
   deploy_production:
     needs: deploy_staging
-    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     environment:
       name: production
-      url: ${{ steps.deploy.outputs.page_url }}
 
     steps:
-      - name: deploy to production
-        id: deploy
-        uses: actions/deploy-pages@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: build-folder
+          path: dist
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Deploy to PRODUCTION
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          SITE_ID: ${{ secrets.NETLIFY_PROD_SITE_ID }}
+        run: |
+          netlify deploy \
+            --prod \
+            --site=$SITE_ID \
+            --auth=$NETLIFY_AUTH_TOKEN \
+            --dir=dist \
+            --message="Production deploy"
